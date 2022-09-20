@@ -4,7 +4,7 @@ const {
   User,
   validateRegister,
   validateLogin,
-} = require("../models/users.model");
+} = require("../../models/users.model");
 
 const SALT = process.env.SALT;
 
@@ -24,7 +24,6 @@ const httpRegisterUserHandler = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(req.body.password, salt);
     await new User({ ...req.body, password: hashPassword }).save();
-    console.log("salt", User);
 
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {

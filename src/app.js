@@ -3,14 +3,16 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const api = require("./routes/api");
+const userRouter = require("./routes/userRoutes/user.router");
+const itemRouter = require("./routes/itemRoutes/item.router");
 
 const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use("/v1", api);
+app.use("/v1", userRouter);
+app.use("/v1", itemRouter);
 app.get("/", (req, res) => {
   res.send("hello");
 });

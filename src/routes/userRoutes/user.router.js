@@ -6,6 +6,7 @@ const {
 } = require("./user.controller");
 
 const userRouter = express.Router();
+console.log("in userRouter");
 
 userRouter.post("/register", httpRegisterUserHandler);
 userRouter.post("/login", httpLoginUserHandler);
